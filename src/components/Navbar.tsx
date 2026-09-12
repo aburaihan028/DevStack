@@ -30,7 +30,7 @@ const Navbar = () => {
             {/* Mobile Menu */}
 
             <div
-                className={`fixed left-1/2 -translate-x-1/2 z-50 w-[95vw] h-[50vh] bg-amber-600 text-base flex flex-col gap-y-3.5 md:hidden font-medium text-gray-800 transition-all duration-500 ease-in-out p-8 ${isMenuOpen ? 'top-16' : 'top-200'} font-plus text-white`}
+                className={`fixed left-1/2 -translate-x-1/2 z-50 w-[95vw] h-[50vh] bg-amber-600 text-base flex flex-col gap-y-3.5 md:hidden font-medium text-gray-800 transition-all duration-500 ease-in-out p-8 ${isMenuOpen ? 'top-16' : 'top-5000'} font-plus text-white`}
             >
                 <button
                     className="absolute top-4 right-4"

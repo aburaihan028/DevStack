@@ -51,8 +51,8 @@ const Explore = () => {
             </div>
 
             {/* Explore the Technologies Section */}
-            <div className="flex items-start mt-10">
-                <div className="w-[60vw]">
+            <div className="md:flex items-start gap-x-2 mt-10">
+                <div className="mb-2.5 md:w-[60vw]">
                     <Suspense fallback={<div>Loading...</div>}>
                         <ExploreCard
                             data={dataPromise}

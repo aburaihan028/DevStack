@@ -12,7 +12,7 @@ const ExploreCard = ({ data, handleAddStack }: Props) => {
     const res = use(data);
 
     return (
-        <section className="grid grid-cols-3 gap-y-6">
+        <section className="grid md:grid-cols-2 md:gap-2 lg:grid-cols-3 lg:gap-y-6">
             {res.map((item) => {
                 const lowerCase = item.icon;
                 const iconSrc = icons[lowerCase.toLowerCase()];
