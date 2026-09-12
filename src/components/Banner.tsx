@@ -1,10 +1,10 @@
 import BannerImg from '../assets/banner-stack.png';
 const Banner = () => {
     return (
-        <div className="my-16 grid md:grid-cols-2 items-center justify-center">
+        <section className="my-16 grid md:grid-cols-2 items-center justify-center">
             {/* Left side */}
             <div className="flex flex-col gap-y-8">
-                <h1 className="text-[#0F172A] font-inter font-extrabold text-3xl md:text-6xl text-center md:text-left">
+                <h1 className="text-[#0F172A] font-inter font-extrabold text-3xl md:text-6xl text-center md:text-left ">
                     Build Your Ideal <br />
                     <span className="bg-clip-text text-transparent bg-linear-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED]">
                         Development Stack
@@ -26,14 +26,14 @@ const Banner = () => {
                 </div>
             </div>
             {/* Right side */}
-            <div className="w-110 h-100 md:w-172 md:h-155">
+            <div className="w-110 h-100 md:w-132 md:h-125 lg:w-162 lg:h-155 ">
                 <img
                     src={BannerImg}
                     alt="hero-banner"
                     className="w-full h-full object-center"
                 />
             </div>
-        </div>
+        </section>
     );
 };
 

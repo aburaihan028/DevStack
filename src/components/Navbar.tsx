@@ -21,7 +21,7 @@ const Navbar = () => {
     return (
         <nav className="h-17.5 flex justify-between items-center font-plus border-b-2 border-[#F1F5F9]">
             {/* Mobile Menu Button */}
-            <div className="flex items-center gap-3 md:hidden">
+            <div className="flex items-center gap-3 lg:hidden">
                 <IoMenuOutline
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     className="size-8"
@@ -54,7 +54,7 @@ const Navbar = () => {
                 <img src={Logo} alt="Logo" className="ms-2.5" />
             </Link>
             {/* Desktop Navbar */}
-            <ul className="hidden md:flex justify-center items-center gap-7">
+            <ul className="hidden lg:flex justify-center items-center gap-7">
                 {navLinks.map((nav) => (
                     <Link
                         className={`${location.pathname === nav.path && 'text-[#DB2777]'} text-[#475569] `}

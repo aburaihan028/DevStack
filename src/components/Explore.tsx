@@ -1,6 +1,7 @@
-import { Suspense } from 'react';
+import React, { Suspense, use, useEffect, useState } from 'react';
 import ExploreCard from './ExploreCard';
 import type { ItemsType } from '../types';
+import AddedStack from './AddedStack';
 
 const fetchData = async (): Promise<ItemsType[]> => {
     try {
@@ -13,8 +14,27 @@ const fetchData = async (): Promise<ItemsType[]> => {
         return [];
     }
 };
-
 const Explore = () => {
+    const [dataPromise] = useState(() => fetchData());
+    const [addStack, setAddStack] = useState<ItemsType[]>([]);
+
+    const handleAddStack = (item: ItemsType) => {
+        setAddStack((prev) => {
+            if (prev.find((current) => current.id === item.id)) {
+                return prev;
+            }
+            return [...prev, item];
+        });
+    };
+
+    const handleRemoveStack = (item: ItemsType) => {
+        setAddStack((prev) => prev.filter((remove) => remove.id !== item.id));
+    };
+
+    const handleRemoveAll = () => {
+        setAddStack([]);
+    };
+
     return (
         <div>
             {/* Heading */}
@@ -31,10 +51,20 @@ const Explore = () => {
             </div>
 
             {/* Explore the Technologies Section */}
-            <div className="w-[65vw]">
-                <Suspense>
-                    <ExploreCard data={fetchData()} />
-                </Suspense>
+            <div className="flex items-start mt-10">
+                <div className="w-[60vw]">
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <ExploreCard
+                            data={dataPromise}
+                            handleAddStack={handleAddStack}
+                        />
+                    </Suspense>
+                </div>
+                <AddedStack
+                    stack={addStack}
+                    onRemove={handleRemoveStack}
+                    onRemoveAll={handleRemoveAll}
+                />
             </div>
         </div>
     );
