@@ -4,33 +4,21 @@ import Logo from '../assets/logo-text.png';
 const Footer = () => {
     const linkSections = [
         {
-            title: 'Quick Links',
-            links: [
-                'Home',
-                'Best Sellers',
-                'Offers & Deals',
-                'Contact Us',
-                'FAQs',
-            ],
+            title: 'PRODUCT',
+            links: ['Home', 'Technologies', 'Projects'],
         },
         {
-            title: 'Need Help?',
-            links: [
-                'Delivery Information',
-                'Return & Refund Policy',
-                'Payment Methods',
-                'Track your Order',
-                'Contact Us',
-            ],
+            title: 'COMPANY',
+            links: ['About', 'Contact', 'Careers'],
         },
         {
-            title: 'Follow Us',
-            links: ['Instagram', 'Twitter', 'Facebook', 'YouTube'],
+            title: 'LEGAL',
+            links: ['Privacy Policy', 'Terms of Service'],
         },
     ];
 
     return (
-        <div className="px-6 md:px-16 lg:px-24 xl:px-32">
+        <>
             <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-500/30 text-gray-500 font-plus">
                 <div>
                     <img className="w-34 md:w-32" src={Logo} alt={Logo} />
@@ -76,12 +64,12 @@ const Footer = () => {
                             <ul className="text-sm space-y-1">
                                 {section.links.map((link, i) => (
                                     <li key={i}>
-                                        <a
-                                            href="#"
+                                        <Link
+                                            to="#"
                                             className="hover:underline transition"
                                         >
                                             {link}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -89,11 +77,16 @@ const Footer = () => {
                     ))}
                 </div>
             </div>
-            <p className="py-4 text-center text-sm md:text-base text-gray-500/80">
-                Copyright 2025 © <a href="https://prebuiltui.com">PrebuiltUI</a>{' '}
-                All Right Reserved.
-            </p>
-        </div>
+            <div className="flex justify-between py-4">
+                <p className="text-sm md:text-base text-gray-500/80">
+                    © 2026 Dev Stack. All rights reserved.
+                </p>
+                <ul className="cursor-pointer flex gap-x-2.5">
+                    <li>Privacy</li>
+                    <li>Terms</li>
+                </ul>
+            </div>
+        </>
     );
 };
 

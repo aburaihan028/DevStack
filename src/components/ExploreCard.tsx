@@ -6,20 +6,26 @@ import { icons } from '../utils/icon';
 interface Props {
     data: Promise<ItemsType[]>;
     handleAddStack: (item: ItemsType) => void;
+    addStack: ItemsType[];
 }
 
-const ExploreCard = ({ data, handleAddStack }: Props) => {
+const ExploreCard = ({ data, handleAddStack, addStack }: Props) => {
     const res = use(data);
 
     return (
         <section className="grid justify-center md:grid-cols-2 md:gap-2 lg:grid-cols-3 lg:gap-y-6">
             {res.map((item) => {
+                // dynamic Icon
                 const lowerCase = item.icon;
                 const iconSrc = icons[lowerCase.toLowerCase()];
+
+                // isAdded true disable button
+                const isAdded = addStack.some((stack) => stack.id === item.id);
+
                 return (
                     <div
                         key={item.id}
-                        className="w-full max-w-xs rounded-2xl bg-white p-6 shadow-sm flex flex-col justify-between"
+                        className={`w-full max-w-xs rounded-2xl p-6 shadow-sm flex flex-col justify-between ${isAdded ? 'border border-red-400' : 'bg-white'}`}
                     >
                         <div>
                             {/* Header Icon & Badge */}
@@ -64,9 +70,10 @@ const ExploreCard = ({ data, handleAddStack }: Props) => {
                                 onClick={() => {
                                     handleAddStack(item);
                                 }}
-                                className="mt-5 w-full rounded-xl bg-[#090D16] py-3 text-sm font-semibold text-white transition hover:bg-slate-800 cursor-pointer"
+                                className={`mt-5 w-full rounded-xl  py-3 text-sm font-semibold  transition  cursor-pointer ${isAdded ? ' bg-slate-300 text-slate-500' : 'bg-[#090D16] text-white hover:bg-slate-800'}`}
+                                disabled={isAdded}
                             >
-                                Add to Stack
+                                {isAdded ? 'Added to Stack' : 'Add to Stack'}
                             </button>
                         </div>
                     </div>

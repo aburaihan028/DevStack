@@ -26,46 +26,52 @@ export default function AddedStack({ stack, onRemove, onRemoveAll }: Props) {
                 </div>
 
                 {/* Stack Items */}
-                <div className="space-y-1.5">
-                    {stack.map((item) => {
-                        const lowerCase = item.icon;
-                        const iconSrc = icons[lowerCase.toLowerCase()];
-                        return (
-                            <div
-                                key={item.id}
-                                className="flex h-11.5 items-center justify-between rounded-[7px] border border-[#dce4ee] bg-white px-2.5 py-7"
-                            >
-                                <div className="flex items-center gap-2.25">
-                                    {/* Logo */}
-                                    <img
-                                        src={iconSrc}
-                                        alt={iconSrc}
-                                        className="flex h-8 w-8 items-center justify-center"
-                                    />
-
-                                    {/* Text */}
-                                    <div className="">
-                                        <p className="text-[18px] font-semibold text-[#172033]">
-                                            {item.title}
-                                        </p>
-
-                                        <p className="mt-0.75 text-[10px] font-normal text-[#9aa8bd]">
-                                            {item.category}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Close */}
-                                <button
-                                    onClick={() => onRemove(item)}
-                                    className="flex h-6 w-6 items-center justify-center rounded-full text-[#91a0b4] transition hover:bg-[#f5f7fa] hover:text-[#68778c] cursor-pointer"
+                {stack.length === 0 ? (
+                    <div className="font-plus text-[12px] text-[#94A3B8] px-12 py-6 border border-dashed rounded-xl">
+                        Your stack is empty.
+                    </div>
+                ) : (
+                    <div className="space-y-1.5">
+                        {stack.map((item) => {
+                            const lowerCase = item.icon;
+                            const iconSrc = icons[lowerCase.toLowerCase()];
+                            return (
+                                <div
+                                    key={item.id}
+                                    className="flex h-11.5 items-center justify-between rounded-[7px] border border-[#dce4ee] bg-white px-2.5 py-7"
                                 >
-                                    <IoMdClose className="size-5" />
-                                </button>
-                            </div>
-                        );
-                    })}
-                </div>
+                                    <div className="flex items-center gap-2.25">
+                                        {/* Logo */}
+                                        <img
+                                            src={iconSrc}
+                                            alt={iconSrc}
+                                            className="flex h-8 w-8 items-center justify-center"
+                                        />
+
+                                        {/* Text */}
+                                        <div className="">
+                                            <p className="text-[18px] font-semibold text-[#172033]">
+                                                {item.title}
+                                            </p>
+
+                                            <p className="mt-0.75 text-[10px] font-normal text-[#9aa8bd]">
+                                                {item.category}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* Close */}
+                                    <button
+                                        onClick={() => onRemove(item)}
+                                        className="flex h-6 w-6 items-center justify-center rounded-full text-[#91a0b4] transition hover:bg-[#f5f7fa] hover:text-[#68778c] cursor-pointer"
+                                    >
+                                        <IoMdClose className="size-5" />
+                                    </button>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
 
                 {/* Remove All */}
                 {stack.length !== 0 && (

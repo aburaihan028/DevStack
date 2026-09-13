@@ -26,7 +26,7 @@ const Banner = () => {
                 </div>
             </div>
             {/* Right side */}
-            <div className="w-110 h-100 md:w-132 md:h-125 lg:w-162 lg:h-155 ">
+            <div className="w-110 h-100 md:w-132 md:h-125 lg:w-172 lg:h-165 ">
                 <img
                     src={BannerImg}
                     alt="hero-banner"

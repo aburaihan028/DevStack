@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'react-router';
 import Logo from '../assets/logo-text.png';
 import { IoMenuOutline } from 'react-icons/io5';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 const Navbar = () => {
+    const [isScrolled, setIsScrolled] = useState<boolean>(false);
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
     const location = useLocation();
@@ -14,12 +15,23 @@ const Navbar = () => {
         { name: 'About', path: '/about' },
         { name: 'Contact', path: '/contact' },
     ];
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+        window.addEventListener('scroll', handleScroll);
 
-    // const openMenu = () => {
-    //     setIsMenuOpen(!isMenuOpen);
-    // };
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+    // className="h-17.5 flex justify-between items-center font-plus border-b-2 border-[#F1F5F9]"
     return (
-        <nav className="h-17.5 flex justify-between items-center font-plus border-b-2 border-[#F1F5F9]">
+        <nav
+            className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
+                isScrolled
+                    ? 'bg-white/80 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4'
+                    : 'py-4 md:py-6 '
+            }`}
+        >
             {/* Mobile Menu Button */}
             <div className="flex items-center gap-3 lg:hidden">
                 <button

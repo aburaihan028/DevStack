@@ -1,7 +1,8 @@
-import React, { Suspense, use, useEffect, useState } from 'react';
+import { Suspense, useState } from 'react';
 import ExploreCard from './ExploreCard';
 import type { ItemsType } from '../types';
 import AddedStack from './AddedStack';
+import { toast } from 'react-toastify';
 
 const fetchData = async (): Promise<ItemsType[]> => {
     try {
@@ -24,6 +25,16 @@ const Explore = () => {
                 return prev;
             }
             return [...prev, item];
+        });
+        toast.success('Added Successfull', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
         });
     };
 
@@ -57,6 +68,7 @@ const Explore = () => {
                         <ExploreCard
                             data={dataPromise}
                             handleAddStack={handleAddStack}
+                            addStack={addStack}
                         />
                     </Suspense>
                 </div>

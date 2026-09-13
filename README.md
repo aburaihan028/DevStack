@@ -1,75 +1,48 @@
-# React + TypeScript + Vite
+# DevTrack Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- A modern web application for exploring technologies and building your personal developer stack.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React
+- JavaScript
+- Tailwind CSS
+- React Toastify
+- React Router
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Add and remove technologies from your stack
+- React router use for Navigation
+- React tostify stack Added successfull show the sucecss toast
 
-## Expanding the ESLint configuration
+# What is JSX, and why is it used in React?
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- JSX (JavaScript XML) is a syntax extension for JavaScript used primarily in React to describe what the user interface (UI) should look like.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# What is the difference between props and state?
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Props are data passed from a parent component to a child component.
+- State is data managed inside a component that can change over time.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# What does the useState hook do, and where did you use it in this project?
 
-```
+- useState lets a component store and update data.
+- I use the project Add to stack update and mobile menu togole manage for useState UI render Update latest UI
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+# What does the useEffect hook do, and why did you need it to load the JSON data?
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- useEffect lets us perform side effects in a React component.
+- react is UI library. so side effect any work useEffect use
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Why does every item in a .map() list need a unique key prop?
 
-```
+- React uses keys to identify which items have changed, been added, or been removed.
+
+# What is conditional rendering? Show one place you used it (example: the empty stack message).
+
+- conditional rendering is According to condition true false UI change thats mean new UI
+
+# How do you pass data from a parent component to a child component, and how does a child send something back to the parent?
+
+- Parent component to a child component data pass used to Props. Child component to a parent component direct dose not pass to Props, child to parent Callback fucntion use to argument a value or reference pass.
